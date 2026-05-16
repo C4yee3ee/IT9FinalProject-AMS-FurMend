@@ -15,11 +15,15 @@ if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
-# Run migrations automatically
-php artisan migrate --force
+# Fresh migration to reset duplicated data (one-time fix)
+php artisan migrate:fresh --force
 
-# Seed data (uses updateOrCreate — safe to re-run)
-php artisan db:seed --force
+# Seed if no users exist yet (first deploy only)
+USER_COUNT=$(php -r "require 'vendor/autoload.php'; \$app = require_once 'bootstrap/app.php'; \$app->make('Illuminate\Contracts\Console\Kernel')->bootstrap(); echo \App\Models\User::count();" 2>/dev/null)
+if [ "$USER_COUNT" = "0" ] || [ -z "$USER_COUNT" ]; then
+    echo "No users found — running db:seed..."
+    php artisan db:seed --force
+fi
 
 # Clear & warm caches for production
 php artisan config:cache

@@ -13,6 +13,11 @@ class DemoDataSeeder extends Seeder
 {
     public function run(): void
     {
+        // Prevent duplicate demo data on re-runs
+        if (Client::count() > 0) {
+            return;
+        }
+
         $staffMembers   = User::where('role', User::ROLE_STAFF)->get();
         $receptionists  = User::where('role', User::ROLE_RECEPTIONIST)->get();
 

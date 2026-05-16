@@ -15,8 +15,8 @@ if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
-# Fresh migration to reset duplicated data (one-time fix)
-php artisan migrate:fresh --force
+# Run migrations automatically
+php artisan migrate --force
 
 # Seed if no users exist yet (first deploy only)
 USER_COUNT=$(php -r "require 'vendor/autoload.php'; \$app = require_once 'bootstrap/app.php'; \$app->make('Illuminate\Contracts\Console\Kernel')->bootstrap(); echo \App\Models\User::count();" 2>/dev/null)

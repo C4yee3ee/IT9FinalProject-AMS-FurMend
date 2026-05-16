@@ -29,6 +29,14 @@ class AuthenticatedSessionController extends Controller
             ]);
         }
 
+        // Block inactive users from logging in
+        if (! Auth::user()->is_active) {
+            Auth::logout();
+            throw ValidationException::withMessages([
+                'email' => 'Your account has been deactivated. Please contact an administrator.',
+            ]);
+        }
+
         $request->session()->regenerate();
 
         return redirect()->intended(route('dashboard'));

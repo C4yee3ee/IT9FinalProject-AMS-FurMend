@@ -15,15 +15,11 @@ if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
-# Run migrations automatically (remove if you prefer manual)
+# Run migrations automatically
 php artisan migrate --force
 
-# Seed if no users exist yet (first deploy)
-USER_COUNT=$(php artisan tinker --execute="echo App\Models\User::count();" 2>/dev/null | tr -d '[:space:]')
-if [ "$USER_COUNT" = "0" ] || [ -z "$USER_COUNT" ]; then
-    echo "No users found — running db:seed..."
-    php artisan db:seed --force
-fi
+# Seed data (uses updateOrCreate — safe to re-run)
+php artisan db:seed --force
 
 # Clear & warm caches for production
 php artisan config:cache

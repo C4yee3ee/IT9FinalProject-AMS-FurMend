@@ -41,10 +41,10 @@ class AppointmentController extends Controller
                 });
             })
             ->when($status, fn ($query) => $query->where('status', $status))
-            ->orderByRaw('CASE WHEN appointment_date >= CURDATE() THEN 0 ELSE 1 END ASC')
-            ->orderByRaw('CASE WHEN appointment_date >= CURDATE() THEN appointment_date END ASC')
+            ->orderByRaw('CASE WHEN appointment_date >= CURRENT_DATE THEN 0 ELSE 1 END ASC')
+            ->orderByRaw('CASE WHEN appointment_date >= CURRENT_DATE THEN appointment_date END ASC')
             ->orderBy('appointment_time', 'asc')
-            ->orderByRaw('CASE WHEN appointment_date < CURDATE() THEN appointment_date END DESC')
+            ->orderByRaw('CASE WHEN appointment_date < CURRENT_DATE THEN appointment_date END DESC')
             ->paginate(10)
             ->withQueryString();
 

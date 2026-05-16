@@ -3,7 +3,7 @@
 @section('content')
 
     {{-- Header Banner --}}
-    <div class="rounded-2xl p-5 text-white shadow-md mb-5 relative overflow-hidden"
+    <div class="rounded-2xl p-5 text-white shadow-md mb-4 relative overflow-hidden"
         style="background:linear-gradient(to right,#26A69A,#4DB6AC)">
         <div class="flex items-start justify-between relative z-10">
             <div>
@@ -28,7 +28,7 @@
         </div>
 
         {{-- Stats --}}
-        <div class="grid grid-cols-3 gap-3 mt-5 relative z-10">
+        <div class="grid grid-cols-3 gap-3 mt-4 relative z-10">
             <div class="bg-white/20 rounded-xl p-3 backdrop-blur-sm border border-white/10">
                 <div class="flex items-center gap-2 mb-1">
                     <svg class="w-3.5 h-3.5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">

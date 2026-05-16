@@ -42,7 +42,7 @@ $statStyle = [
 <div class="grid grid-cols-4 gap-4 mb-5">
     @foreach ($statCards as $i => $card)
     @php $s = $statStyle[$i % 4]; @endphp
-    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 px-4 py-3 hover:shadow-md transition-shadow"
+    <div class="bg-white rounded-2xl shadow-sm border border-[rgba(38,166,154,0.2)] px-4 py-3 hover:shadow-md transition-shadow"
         style="border-top:3px solid {{ $s['accent'] }}">
         <div class="flex items-center justify-between mb-2">
             <span class="text-xs font-medium text-slate-500">{{ $card['label'] }}</span>
@@ -65,7 +65,7 @@ $statStyle = [
 
         {{-- Charts --}}
         <div class="grid grid-cols-2 gap-4">
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+            <div class="bg-white rounded-2xl shadow-sm border border-[rgba(38,166,154,0.2)] p-5">
                 <div class="flex items-center justify-between mb-3">
                     <div>
                         {{-- Card titles: text-sm (14px) --}}
@@ -73,7 +73,7 @@ $statStyle = [
                         {{-- Labels: text-xs (12px) --}}
                         <p class="text-xs text-slate-400 mt-0.5">{{ now()->startOfWeek()->format('M d') }} – {{ now()->endOfWeek()->format('M d') }}</p>
                     </div>
-                    <span class="text-xs font-semibold text-[#26A69A] bg-[#E8F5F3] px-2.5 py-1 rounded-full">
+                    <span class="text-xs font-semibold text-[#26A69A] bg-[#E8F5F3] px-2.5 py-0.5 rounded-md">
                         {{ array_sum($weeklyAppointmentsData) }} total
                     </span>
                 </div>
@@ -82,13 +82,13 @@ $statStyle = [
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+            <div class="bg-white rounded-2xl shadow-sm border border-[rgba(38,166,154,0.2)] p-5">
                 <div class="flex items-center justify-between mb-3">
                     <div>
                         <h2 class="text-sm font-bold text-slate-800">Monthly Overview</h2>
                         <p class="text-xs text-slate-400 mt-0.5">Last 6 months</p>
                     </div>
-                    <span class="text-xs font-semibold text-[#26A69A] bg-[#E8F5F3] px-2.5 py-1 rounded-full">
+                    <span class="text-xs font-semibold text-[#26A69A] bg-[#E8F5F3] px-2.5 py-0.5 rounded-md">
                         {{ now()->format('Y') }}
                     </span>
                 </div>
@@ -116,8 +116,8 @@ $statStyle = [
         @endphp
 
         {{-- Recent Activity --}}
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-            <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+        <div class="bg-white rounded-2xl shadow-sm border border-[rgba(38,166,154,0.2)] overflow-hidden">
+            <div class="px-5 py-4 border-b border-[rgba(38,166,154,0.2)] flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
                     <div class="w-8 h-8 bg-slate-100 rounded-xl flex items-center justify-center">
                         <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,8 +167,8 @@ $statStyle = [
         </div>
 
         {{-- Service Notes --}}
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-            <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+        <div class="bg-white rounded-2xl shadow-sm border border-[rgba(38,166,154,0.2)] overflow-hidden">
+            <div class="px-5 py-4 border-b border-[rgba(38,166,154,0.2)] flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
                     <div class="w-8 h-8 bg-slate-100 rounded-xl flex items-center justify-center">
                         <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -210,7 +210,7 @@ $statStyle = [
     <div class="space-y-4">
 
         {{-- Status Breakdown --}}
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+        <div class="bg-white rounded-2xl shadow-sm border border-[rgba(38,166,154,0.2)] p-5">
             <h2 class="text-sm font-bold text-slate-800 mb-4">Status Breakdown</h2>
             <div class="flex justify-center mb-4">
                 <canvas id="statusChart" width="150" height="150"></canvas>
@@ -237,7 +237,7 @@ $statStyle = [
         </div>
 
         {{-- Appointment Types --}}
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+        <div class="bg-white rounded-2xl shadow-sm border border-[rgba(38,166,154,0.2)] p-5">
             <h2 class="text-sm font-bold text-slate-800 mb-4">Appointment Types</h2>
             <div class="space-y-3">
                 @forelse($appointmentTypesData as $type)
@@ -258,7 +258,7 @@ $statStyle = [
         </div>
 
         {{-- Top Staff --}}
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+        <div class="bg-white rounded-2xl shadow-sm border border-[rgba(38,166,154,0.2)] p-5">
             <h2 class="text-sm font-bold text-slate-800 mb-4">Top Staff by Completions</h2>
             <div class="space-y-4">
                 @forelse($topStaff as $i => $member)
